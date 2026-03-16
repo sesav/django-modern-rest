@@ -3,7 +3,7 @@ from http import HTTPStatus
 import pytest
 from django.conf import LazySettings
 
-from dmr.errors import ErrorType, format_error
+from dmr.errors import ErrorDetail, ErrorType, format_error
 from dmr.exceptions import (
     InternalServerError,
     NotAcceptableError,
@@ -54,7 +54,9 @@ def test_format_error_error_type_as_str() -> None:
 
 def test_format_error_from_validation() -> None:
     """Ensures ``ValidationError`` payload is returned as-is."""
-    payload = [{'msg': 'too short', 'loc': ['name'], 'type': 'value_error'}]
+    payload: list[ErrorDetail] = [
+        {'msg': 'too short', 'loc': ['name'], 'type': 'value_error'},
+    ]
     exc = ValidationError(payload, status_code=HTTPStatus.UNPROCESSABLE_ENTITY)
 
     formatted = format_error(exc)
@@ -146,4 +148,4 @@ def test_format_error_from_ise_no_debug(
 def test_format_error_unknown_exc_raises() -> None:
     """Ensures unhandled exception types raise ``NotImplementedError``."""
     with pytest.raises(NotImplementedError, match='Cannot format error'):
-        format_error(ValueError('unexpected'))  # type: ignore[arg-type]
+        format_error(ValueError('unexpected'))
