@@ -21,16 +21,19 @@ def test_format_error_from_string() -> None:
 
 
 def test_format_error_from_string_with_loc() -> None:
+    """Ensures ``loc`` parameter is included as a list in the detail entry."""
     result = format_error('bad value', loc='body')
     assert result == {'detail': [{'msg': 'bad value', 'loc': ['body']}]}
 
 
 def test_format_error_from_string_with_error_type() -> None:
+    """Ensures ``error_type`` parameter is included in the detail entry."""
     result = format_error('bad value', error_type=ErrorType.user_msg)
     assert result == {'detail': [{'msg': 'bad value', 'type': 'user_msg'}]}
 
 
 def test_format_error_from_string_with_loc_and_error_type() -> None:
+    """Ensures both ``loc`` and ``error_type`` are included together."""
     result = format_error(
         'bad value',
         loc='field',
