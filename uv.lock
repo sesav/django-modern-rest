@@ -737,7 +737,7 @@ dev = [
     { name = "covdefaults", specifier = ">=2.3,<3" },
     { name = "dennis", specifier = ">=1.2,<2" },
     { name = "dirty-equals", specifier = ">=0.11,<0.12" },
-    { name = "django", specifier = ">=5.2,<6" },
+    { name = "django", specifier = "~=5.2.0" },
     { name = "django-csp", specifier = ">=4.0,<5.0" },
     { name = "django-stubs", extras = ["compatible-mypy"], specifier = ">=6.0,<6.1" },
     { name = "faker", specifier = ">=40.1,<41" },
@@ -797,7 +797,7 @@ integration = [
 unit-test = [
     { name = "covdefaults", specifier = ">=2.3,<3" },
     { name = "dirty-equals", specifier = ">=0.11,<0.12" },
-    { name = "django", specifier = ">=5.2,<6" },
+    { name = "django", specifier = "~=5.2.0" },
     { name = "django-csp", specifier = ">=4.0,<5.0" },
     { name = "faker", specifier = ">=40.1,<41" },
     { name = "inline-snapshot", specifier = ">=0.32,<0.33" },
